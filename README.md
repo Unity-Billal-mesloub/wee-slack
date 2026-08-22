@@ -3,7 +3,7 @@ wee-slack
 
 A WeeChat native client for Slack.com. Provides supplemental features only available in the web/mobile clients such as: synchronizing read markers, typing notification, threads (and more)! Connects via the Slack API, and maintains a persistent websocket for notification of events.
 
-![animated screenshot](https://github.com/wee-slack/wee-slack/raw/master/docs/slack.gif)
+![animated screenshot](https://github.com/Unity-Billal-mesloub/wee-slack/raw/master/docs/slack.gif)
 
 Table of Contents
 -----------------
@@ -59,11 +59,6 @@ Features
   * Away/back status handling
   * Expands/shows metadata for things like tweets/links
   * *Super fun* debug mode. See what the websocket is saying
-
-Contributing
-------------
-
-See [docs/contributing.md](./docs/contributing.md).
 
 Dependencies
 ------------
@@ -328,7 +323,7 @@ _Note: labels do not persist once a thread buffer is closed_
 
 To enable rendering of emoji characters and tab completion of emoji names, copy
 or symlink the
-[`weemoji.json`](https://github.com/wee-slack/wee-slack/blob/master/weemoji.json)
+[`weemoji.json`](https://github.com/Unity-Billal-mesloub/wee-slack/blob/main/weemoji.json)
 file to your WeeChat config directory (e.g. `~/.local/share/weechat` or
 `~/.weechat`). If doing this after starting wee-slack, you will have to reload
 it by running `/python reload slack`.
@@ -410,7 +405,7 @@ mentioned in the previous question.
 
 #### Local notifications on Linux
 
-Use [this trigger](https://github.com/weechat/weechat/wiki/Triggers#show-a-libnotify-desktop-notification-via-notify-send).
+Use [this trigger](https://github.com/Unity-Billal-mesloub/weechat/wiki/Triggers#show-a-libnotify-desktop-notification-via-notify-send).
 You need the `notify-send` command, or alternatively replace it with another
 command in the trigger.
 
@@ -472,7 +467,7 @@ Known issues
 ------------
 
 Not all issues are listed here (see
-[issues](https://github.com/wee-slack/wee-slack/issues) for all), but these are
+[issues](https://github.com/Unity-Billal-mesloub/wee-slack/issues) for all), but these are
 some noteworthy:
 
 - If you set `background_load_all_history` to `false`:
@@ -512,3 +507,66 @@ Support
 -------
 
 wee-slack is provided without any warranty whatsoever, but you are welcome to ask questions in #wee-slack on [Libera.Chat](https://libera.chat/).
+
+# Contributing
+
+Thank you for considering contributing to `wee-slack`!
+
+## Requirements
+
+* [`git`](https://git-scm.com)
+* [`uv`](https://docs.astral.sh/uv/)
+
+## Installing dependencies
+
+The main dependencies are installed automatically when running `uv` commands,
+but to install the dependencies required by the `extract_token_from_browser.py`
+script, first navigate to the project root, and then execute:
+
+```
+$ uv sync --all-extras
+```
+
+## Formatting and linting
+
+The code is formatted and linted with [`ruff`](https://docs.astral.sh/ruff/).
+To format all the files, first navigate to the project root, and then execute:
+
+```
+$ uv run ruff format
+```
+
+To lint all the files, first navigate to the project root, and then execute:
+
+```
+$ uv run ruff check
+```
+
+## Testing
+
+Tests are executed with [`pytest`](https://pytest.org/). To run the tests,
+first navigate to the project root, and then execute:
+
+```
+$ uv run pytest
+```
+
+## Updating dependencies
+
+It's important to keep our dependencies up-to-date over time. To update the
+dependencies installed in your local virtual environment:
+
+```
+# Check for upstream updates
+$ uv tree --depth 1 --outdated
+
+# Want to update everything?
+$ uv lock --upgrade
+
+# Want to update one package at a time?
+$ uv lock --upgrade-package <pkg>
+```
+
+It's important to [run the tests](#testing) after updating dependencies to
+ensure that the updated dependencies have not broken the build.
+
